@@ -3,7 +3,11 @@ package com.epam.atm.singleton;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverSingleton {
@@ -23,7 +27,14 @@ public class WebDriverSingleton {
         System.setProperty("webdriver.chrome.driver", "c:\\SeleniumDrivers\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-        WebDriver webDriver = new ChromeDriver(options);
+//        WebDriver webDriver = new ChromeDriver(options);
+        WebDriver webDriver = null;
+        try {
+            webDriver = new RemoteWebDriver(new URL("http://10.6.103.107:4444/wd/hub"), options);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
         webDriver.manage().timeouts()
                 .pageLoadTimeout(15, TimeUnit.SECONDS);
         webDriver.manage().timeouts()
