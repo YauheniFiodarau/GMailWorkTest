@@ -30,7 +30,7 @@ public class WebDriverSingleton {
 //        WebDriver webDriver = new ChromeDriver(options);
         WebDriver webDriver = null;
         try {
-            webDriver = new RemoteWebDriver(new URL("http://10.6.103.107:4444/wd/hub"), options);
+            webDriver = new RemoteWebDriver(new URL("http://10.6.218.14:4444/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
