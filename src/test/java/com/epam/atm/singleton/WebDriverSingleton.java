@@ -24,10 +24,8 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver initializingWebDriver() {
-        System.setProperty("webdriver.chrome.driver", "c:\\SeleniumDrivers\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
-//        WebDriver webDriver = new ChromeDriver(options);
         WebDriver webDriver = null;
         try {
             webDriver = new RemoteWebDriver(new URL("http://10.6.218.14:4444/wd/hub"), options);
